@@ -14,6 +14,7 @@ C:\DirectXTK\Bin\Desktop_2022\Win32\Debug
 DirectXTK.lib
 
 操作：
+
 [Ctrl]+[右マウスボタンのドラッグ]：　カメラの回転
 
 ベクトルAの回転：　「←」「→」キー
