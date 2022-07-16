@@ -16,7 +16,7 @@
 GraphScene::GraphScene(Game* game)
 	:
 	m_game(game),									// Gameクラス
-	m_graphics(nullptr),				// DirectXGraphicsクラス
+	m_graphics(nullptr),							// DirectXGraphicsクラス
 	m_device(nullptr),								// Deviceクラス
 	m_context(nullptr),								// DeviceContextクラス
 	m_keyboardState{},								// キーボードステート
