@@ -12,3 +12,11 @@ C:\DirectXTK\Bin\Desktop_2022\Win32\Debug
 
 追加の依存ファイル:
 DirectXTK.lib
+
+操作：
+
+[Ctrl]+[右マウスボタンのドラッグ]：　カメラの回転
+
+ベクトルAの回転：　「←」「→」キー
+
+ベクトルBの回転：　「↑」「↓」キー
