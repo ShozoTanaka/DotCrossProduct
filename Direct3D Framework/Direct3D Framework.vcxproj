@@ -23,7 +23,7 @@
     <ProjectGuid>{6acaed96-26eb-4b40-b971-3f06b83d2f85}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Dot Cross Product</ProjectName>
+    <ProjectName>DotCrossProduct</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

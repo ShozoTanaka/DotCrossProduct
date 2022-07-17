@@ -58,6 +58,8 @@ GraphScene::~GraphScene()
 // 初期化する
 void GraphScene::Initialize()
 {
+	// クォータニオンカメラ回転を初期化する
+	m_cameraRotation.CreateFromYawPitchRoll(DirectX::SimpleMath::Vector3(0.0f, 1.0f, 0.0f));
 }
 
 // 更新する
@@ -135,7 +137,7 @@ void GraphScene::Render()
 	// ベクトルAを描画する
 	m_graphics->DrawVector(DirectX::SimpleMath::Vector2(0.0f, 0.0f), m_vectorA, DirectX::Colors::White);
 	// 白色の円を描画する
-	m_graphics->DrawCircle(m_vectorA, 10.0f, DirectX::Colors::White);
+	m_graphics->DrawCircle(m_vectorA, 3.0f, DirectX::Colors::White);
 
 	// 内積または外積の計算結果が0より大きくなった場合
 	if (m_result > 0)
@@ -144,7 +146,7 @@ void GraphScene::Render()
 		// 外積の場合ベクトルBはベクトルAの右側に存在する
 		m_graphics->DrawVector(DirectX::SimpleMath::Vector2(0.0f, 0.0f), m_vectorB, DirectX::Colors::Red);
 		// 赤色の円を描画する
-		m_graphics->DrawCircle(m_vectorB, 10.0f, DirectX::Colors::Red);
+		m_graphics->DrawCircle(m_vectorB, 3.0f, DirectX::Colors::Red);
 	}
 	else
 	{
@@ -152,7 +154,7 @@ void GraphScene::Render()
 		// 外積の場合ベクトルBはベクトルAの左側に存在する
 		m_graphics->DrawVector(DirectX::SimpleMath::Vector2(0.0f, 0.0f), m_vectorB, DirectX::Colors::Blue);
 		// 青色の円を描画する
-		m_graphics->DrawCircle(m_vectorB, 10.0f, DirectX::Colors::Blue);
+		m_graphics->DrawCircle(m_vectorB, 3.0f, DirectX::Colors::Blue);
 	}
 	// プリミティブ描画を終了する
 	m_graphics->DrawPrimitiveEnd();
@@ -176,11 +178,15 @@ void GraphScene::DrawInfo()
 	swprintf(stringBuffer, sizeof(stringBuffer) / sizeof(wchar_t), L"Camera position: (%6.1f, %6.1f, %6.1f)", 
 	m_cameraPosition.x, m_cameraPosition.y, m_cameraPosition.z);
 	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 0.0f));
+	// カメラ回転角を書式化する
+	swprintf(stringBuffer, sizeof(stringBuffer) / sizeof(wchar_t), L"Camera rotation: (%6.1f, %6.1f, %6.1f), %6.1f)",
+		m_cameraRotation.x, m_cameraRotation.y, m_cameraRotation.z, m_cameraRotation.w);
+	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 28.0f));
 
 	// 内積/外積を書式化する
 	swprintf(stringBuffer, 	sizeof(stringBuffer) / sizeof(wchar_t), L"Dot/Cross Product: %6.1f", m_result);
 	// 内積外積書式化した文字列と表示する座標を追加する
-	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 28.0f));
+	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 56.0f));
 	// すべての情報を描画する
 	spriteString2D.Render();
 }
@@ -246,6 +252,7 @@ void GraphScene::ControlCamera(const DX::StepTimer& timer)
 		// ボールカメラを終了する
 		m_ballCamera.OnEnd();
 	}
+
 	// カメラの向きを更新する
 	auto direction = DirectX::SimpleMath::Vector3::Transform(DirectX::SimpleMath::Vector3::Backward, m_cameraRotation);
 	// カメラ位置を計算する

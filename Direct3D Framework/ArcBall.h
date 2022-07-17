@@ -22,7 +22,7 @@ public:
         :
         m_width(1280.f),
         m_height(720.f),
-        m_radius(1.f),
+        m_radius(1.0f),
         m_drag(false) 
     {
         Reset();  
