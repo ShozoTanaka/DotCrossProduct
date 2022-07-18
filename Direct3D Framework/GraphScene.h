@@ -91,13 +91,13 @@ private:
 	ArcBall	 m_ballCamera;
 
 	// 角度
-	float m_angleA;
-	float m_angleB;
+	float m_angleV1;
+	float m_angleV2;
 
-	// ベクトルA
-	DirectX::SimpleMath::Vector2 m_vectorA;
-	// ベクトルB
-	DirectX::SimpleMath::Vector2 m_vectorB;
+	// ベクトルv1
+	DirectX::SimpleMath::Vector2 m_vectorV1;
+	// ベクトルv2
+	DirectX::SimpleMath::Vector2 m_vectorV2;
 	// 内積の計算
 	float m_result;
 };
