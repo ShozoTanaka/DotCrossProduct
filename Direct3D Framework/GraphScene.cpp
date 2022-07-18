@@ -182,11 +182,20 @@ void GraphScene::DrawInfo()
 	swprintf(stringBuffer, sizeof(stringBuffer) / sizeof(wchar_t), L"Camera rotation: (%6.1f, %6.1f, %6.1f), %6.1f)",
 		m_cameraRotation.x, m_cameraRotation.y, m_cameraRotation.z, m_cameraRotation.w);
 	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 28.0f));
-
+	// ベクトルAの位置を書式化する
+	swprintf(stringBuffer, sizeof(stringBuffer) / sizeof(wchar_t), L"Vector A position: (%6.1f, %6.1f)",
+		m_vectorA.x, m_vectorA.y);
+	// ベクトルAを書式化した文字列と表示する座標を追加する
+	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 56.0f));
+	// ベクトルBの位置を書式化する
+	swprintf(stringBuffer, sizeof(stringBuffer) / sizeof(wchar_t), L"Vector B position: (%6.1f, %6.1f)",
+		m_vectorB.x, m_vectorB.y);
+	// ベクトルBを書式化した文字列と表示する座標を追加する
+	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 84.0f));
 	// 内積/外積を書式化する
 	swprintf(stringBuffer, 	sizeof(stringBuffer) / sizeof(wchar_t), L"Dot/Cross Product: %6.1f", m_result);
 	// 内積外積書式化した文字列と表示する座標を追加する
-	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 56.0f));
+	spriteString2D.AddString(stringBuffer, DirectX::SimpleMath::Vector2(0.0f, 112.0f));
 	// すべての情報を描画する
 	spriteString2D.Render();
 }
